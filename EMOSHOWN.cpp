@@ -5,7 +5,7 @@
 #include <iomanip>
 using namespace std;
 
-
+// test
 void Stress(int i);
 void Emotion(int i);
 void Mood(int i);
