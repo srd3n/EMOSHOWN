@@ -11,7 +11,7 @@ void Emotion(int i);
 void Mood(int i);
 void Main(int i);
 void Menu(int i);
-
+// haha
 const int DAYS = 7;
 
 string FN, LN, Age, Gender;
