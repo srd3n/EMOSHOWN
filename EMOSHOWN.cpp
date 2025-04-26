@@ -5,16 +5,17 @@
 #include <iomanip>
 using namespace std;
 
-// test
+
 void Stress(int i);
 void Emotion(int i);
 void Mood(int i);
-void Main(int i);
+void Log(int i);
 void Menu(int i);
-// haha
+
 const int DAYS = 7;
 
 string FN, LN, Age, Gender;
+int choice;
 
 struct Day{
     int dailyStressLevel, dailyEmotionLevel, dailyMoodLevel;
@@ -29,7 +30,6 @@ struct Day{
     double average;
 };
     Day day[DAYS];
-void clear(){system("cls");}
 
 double Result_Mental_State(double sum, int i)
 {
@@ -49,7 +49,7 @@ string Result_Assessment(double average)
     }
     else if (average <= 10)
     {
-        return "You're feeling balanced, calm, and positive. Keep maintaining this mindset and continue to take care of your mental health every day.";
+        return "You're feeling balanced, calm, and positive. Keep Logtaining this mindset and continue to take care of your mental health every day.";
     }
     return "";
 }
@@ -71,13 +71,14 @@ string Description(double average)
     {
         return "Severe";
     }
+        return " ";
 }
-void MainMenu()
+void user()
 {
     cout << "==============================================" << endl;
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
-
+    cout << "<< USER INFORMATION"<< endl;
     cout << "First Name : ";
     getline(cin, FN);
 
@@ -90,7 +91,6 @@ void MainMenu()
     cout << "Gender     : ";
     cin >> Gender;
 
-    clear();
 }
 void Stress(int i)
 {
@@ -150,8 +150,8 @@ void Stress(int i)
     default:
         cout << "Invalid choice. Please enter a number between 1 and 11." << endl;
     }
-    clear();
-    Main(i);
+
+    Log(i);
 }
 void Emotion(int i)
 {
@@ -211,8 +211,8 @@ void Emotion(int i)
     default:
         cout << "Invalid choice. Please enter a number between 1 and 11." << endl;
     }
-    clear();
-    Main(i);
+    
+    Log(i);
 }
 void Mood(int i)
 {
@@ -272,15 +272,15 @@ void Mood(int i)
     default:
         cout << "Invalid choice. Please enter a number between 1 and 11." << endl;
     }
-    clear();
-    Main(i);
+    
+    Log(i);
 }
 void Menu(int i)
 {
     cout << "==============================================" << endl;
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
-
+    cout << "<< MAIN MENU"<< endl;
     cout << "Hi, " << FN << " " << LN << " Welcome to EmoShown where your \n \tmental health matters" << endl;
     cout << endl;
     cout << "<< Today is your day " << i + 1 << endl; 
@@ -290,45 +290,41 @@ void Menu(int i)
     cout << "\t3. Take Notes" << endl;
     cout << "\t4. Exit" << endl;
     cout << ">> ";
-    cin >> day[i].choice;
-    clear();
-}
-int main()
-{
-    Day day[DAYS];
+    cin >> choice;
     
-	MainMenu();
-	// Menu (i);
-	for (int i = 0; i < DAYS; i++){
-        Stress(i);
-        Emotion(i);
-        Mood(i);
+}
+int main() {
+    user();
+    int i = 0;
+
+    while (true) {
         Menu(i);
-        Main(i);
+        Log(i);
+        if (choice == 4) {
+            break;
+        }
+        i++;
+        if (i >= DAYS) {
+            cout << "You've reached the max number of days to log." << endl;
+            break;
+        }
     }
-    // if (Result_Mental_State()<=  2.5 ){
-    //     cout << "Healthy";
-    // } else if (Result_Mental_State()<= 5){
-    //     cout << "Mild";
-    // } else if (Result_Mental_State()<= 7.5){
-    //     cout << "Moderate";
-    // } else if (Result_Mental_State()<= 10){
-    //     cout << "Severe";
-    // }
+
     return 0;
 }
-void Main(int i)
+void Log(int i)
 {
-    switch ( day[i].choice)
+    switch (choice)
     {
     case 1:
         cout << "==============================================" << endl;
         cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
         cout << "==============================================" << endl;
+        cout << "<< NEW LOG"<< endl;
         cout << "<< Enter Today’s Mental Health Status" << endl;
         cout << "\t|| 1. Stress level: " <<  day[i].stress << endl;
         cout << "\t|| 2. Emotion level: " <<  day[i].emotion << endl;
-        cout << "\t|| 3. Mood: " <<  day[i].mood << endl;
+        cout << "\t|| 3. Mood level: " <<  day[i].mood << endl;
         cout << "\t\t(4) Back to menu" << endl;
         cout << ">> ";
         cin >>  day[i].choice1_1;
@@ -363,16 +359,17 @@ void Main(int i)
         cout << "<< Your Note           : " << "\"" <<  day[i].Notes << "\"" << endl;
         cout << "<< Mental State Average: " << fixed << setprecision(1) << Result_Mental_State( day[i].sum, i) << " " << Description( day[i].average) << endl;
         cout << endl;
-        cout << "(1) Sorting by Mental State" << endl;
-        cout << "(2) Sorting by Date" << endl;
-        cout << "\t\t(3) Back to menu" << endl;
+        cout << "(1) Would to continue the next day?" << endl;
+        cout << "(2) Sorting by Mental State" << endl;
+        cout << "(3) Sorting by Date" << endl;
+        cout << "\t\t(4) Back to menu" << endl;
         cout << ">> ";
         cin >>  day[i].choice2;
         if ( day[i].choice2 == 3)
         {
             Menu(i);
         }
-        clear();
+        
     case 3:
         cout << "==============================================" << endl;
         cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
@@ -389,9 +386,8 @@ void Main(int i)
         	Menu(i);
 	    } while (day[i].choice3 == 1);
 
-        clear();
     case 4:
-        MainMenu();
+        user();
 
         break;
     }
