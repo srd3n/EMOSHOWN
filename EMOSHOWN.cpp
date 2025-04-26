@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <cstdlib>
 #include <iomanip>
 using namespace std;
+
 
 void Stress(int i);
 void Emotion(int i);
@@ -294,14 +296,16 @@ void Menu(int i)
 int main()
 {
     Day day[DAYS];
-    for (int i = 0; i < DAYS; i++){
+    
+	MainMenu();
+	// Menu (i);
+	for (int i = 0; i < DAYS; i++){
         Stress(i);
         Emotion(i);
         Mood(i);
         Menu(i);
         Main(i);
     }
-    MainMenu();
     // if (Result_Mental_State()<=  2.5 ){
     //     cout << "Healthy";
     // } else if (Result_Mental_State()<= 5){
@@ -374,14 +378,17 @@ void Main(int i)
         cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
         cout << "==============================================" << endl;
         cout << "<< What's on your mind? \n \t\t(1)Back to menu \n >> ";
-        cin >>  day[i].Notes;
-        cout << "\t\t(1) Back to menu" << endl;
-        cout << ">> ";
-        cin >>  day[i].choice3;
-        if ( day[i].choice3 == 1)
-        {
-            Menu(i);
-        }
+        char notes[100];
+        cin.ignore();
+        cin.getline(notes, 100);
+		strcpy(day[i].Notes, notes); 
+		do {
+			cout << "\t\t(1) Back to menu" << endl;
+        	cout << ">> ";
+        	cin >>  day[i].choice3;
+        	Menu(i);
+	    } while (day[i].choice3 == 1);
+
         clear();
     case 4:
         MainMenu();
