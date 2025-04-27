@@ -11,6 +11,8 @@ void Emotion(int i);
 void Mood(int i);
 void Log(int i);
 void Menu(int i);
+void sortingByDate();
+void sortingByMental();
 void clear();
 const int DAYS = 7;
 
@@ -25,11 +27,23 @@ struct Day
     int choice2;
     int choice3;
     char Notes[100];
+    int date;
+    int year;
+    int month;
+    int days;
 
     double sum;
     double average;
 };
+struct UserLog{
+    int year;
+    int month;
+    int days;
+    float ave;
+    string des;
+};
 Day day[DAYS];
+UserLog logs[100];
 
 double Result_Mental_State(double sum, int i)
 {
@@ -73,8 +87,10 @@ string Description(double average)
     }
     return " ";
 }
-void user()
+void user(int i)
 {
+    UserLog userlog;
+    logs[i] = userlog;
     cout << "==============================================" << endl;
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
@@ -85,11 +101,18 @@ void user()
     cout << "Last Name  : ";
     getline(cin, LN);
 
-    cout << "Age        : ";
+    cout << "Age\t: ";
     cin >> Age;
 
-    cout << "Gender     : ";
+    cout << "Gender\t: ";
     cin >> Gender;
+
+    cout << "Date\t:";
+    cin >> day[i].days >> day[i].month >> day[i].year;
+    cin.ignore();
+    userlog.days = day[i].days;
+    userlog.year = day[i].year;
+    userlog.month = day[i].month;
 }
 void Stress(int i)
 {
@@ -292,12 +315,13 @@ void Menu(int i)
     cout << "\t4. Exit" << endl;
     cout << ">> ";
     cin >> choice;
+    clear();
 }
 int main()
 {
-    user();
+   
     int i = 0;
-
+    user(i);
     while (true)
     {
         Menu(i);
@@ -361,7 +385,7 @@ void Log(int i)
         cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
         cout << "==============================================" << endl;
         cout << "<< Daily Mental Health summary" << endl;
-        // cout << "Day: " << i << endl;
+        cout << "Day: " << day[i].days << endl;
         cout << "\t|| Stress level  : " << day[i].stress << endl;
         cout << "\t|| Emotion level :  " << day[i].emotion << endl;
         cout << "\t|| Mood level    : " << day[i].mood << endl;
@@ -369,18 +393,27 @@ void Log(int i)
         cout << "<< Assessment          : " << Result_Assessment(day[i].average) << endl;
         cout << "<< Your Note           : " << "\"" << day[i].Notes << "\"" << endl;
         cout << "<< Mental State Average: " << fixed << setprecision(1) << Result_Mental_State(day[i].sum, i) << " " << Description(day[i].average) << endl;
-        cout << endl;
-        cout << "(1) Would to continue the next day?" << endl;
+        cout << "********************************************************************"<< endl;
+        cout << "(1) Would you like to enter new log?" << endl;
         cout << "(2) Sorting by Mental State" << endl;
         cout << "(3) Sorting by Date" << endl;
         cout << "\t\t(4) Back to menu" << endl;
         cout << ">> ";
         cin >> day[i].choice2;
+        if (day[i].choice2 == 1){
+
+         }
+        if (day[i].choice2 == 2){
+
+         }
+        if (day[i].choice2 == 3){
+
+         }
         if (day[i].choice2 == 4)
         {
             Menu(i);
             Log(i);
-        }
+        } 
         break;
 
     case 3:
@@ -411,8 +444,9 @@ void Log(int i)
 
     // deletion>>
 }
+void sortingByMental(){
 
-
+}
 
 // tools
 void clear(){
