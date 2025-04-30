@@ -35,13 +35,15 @@ struct Day
     double sum;
     double average;
 };
-struct UserLog{
+struct UserLog
+{
     int year;
     int month;
     int days;
     float ave;
     string des;
 };
+
 Day day[DAYS];
 UserLog logs[100];
 
@@ -113,6 +115,7 @@ void user(int i)
     userlog.days = day[i].days;
     userlog.year = day[i].year;
     userlog.month = day[i].month;
+    logs[i] = userlog;
 }
 void Stress(int i)
 {
@@ -237,8 +240,8 @@ void Emotion(int i)
     Log(i);
 }
 void Mood(int i)
-{   
-   
+{
+
     cout << "==============================================" << endl;
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
@@ -319,7 +322,7 @@ void Menu(int i)
 }
 int main()
 {
-   
+
     int i = 0;
     user(i);
     while (true)
@@ -373,10 +376,11 @@ void Log(int i)
         {
             Menu(i);
             Log(i);
-        }else{
+        }
+        else
+        {
             cin.ignore();
             Log(i);
-            
         }
         break;
     case 2:
@@ -392,28 +396,31 @@ void Log(int i)
         cout << endl;
         cout << "<< Assessment          : " << Result_Assessment(day[i].average) << endl;
         cout << "<< Your Note           : " << "\"" << day[i].Notes << "\"" << endl;
+
         cout << "<< Mental State Average: " << fixed << setprecision(1) << Result_Mental_State(day[i].sum, i) << " " << Description(day[i].average) << endl;
-        cout << "********************************************************************"<< endl;
+        logs[i].ave = Result_Mental_State(day[i].sum, i);
+        logs[i].des = Description(day[i].average);
+        cout << "********************************************************************" << endl;
         cout << "(1) Would you like to enter new log?" << endl;
         cout << "(2) Sorting by Mental State" << endl;
         cout << "(3) Sorting by Date" << endl;
         cout << "\t\t(4) Back to menu" << endl;
         cout << ">> ";
         cin >> day[i].choice2;
-        if (day[i].choice2 == 1){
-
-         }
-        if (day[i].choice2 == 2){
-
-         }
-        if (day[i].choice2 == 3){
-
-         }
+        if (day[i].choice2 == 1)
+        {
+        }
+        if (day[i].choice2 == 2)
+        {
+        }
+        if (day[i].choice2 == 3)
+        {
+        }
         if (day[i].choice2 == 4)
         {
             Menu(i);
             Log(i);
-        } 
+        }
         break;
 
     case 3:
@@ -444,11 +451,76 @@ void Log(int i)
 
     // deletion>>
 }
-void sortingByMental(){
+void sortingByMental(UserLog logsArray[100], int currentSize)
+{
 
+    for (int i = 1; i < currentSize; i++)
+    {
+        UserLog key = logsArray[i];
+        int j = i - 1;
+
+        while (j >= 0 && logsArray[j].des > key.des)
+        {
+
+            logsArray[j + 1] = logsArray[j];
+            j--;
+        }
+        logsArray[j + 1] = key;
+    }
+
+    for (int i = 0; i < currentSize; i++)
+    {
+        cout << logsArray[i].des << endl;
+    }
 }
+void sortingByDate(UserLog logsArray[100], int currentSize)
+{
 
+    for (int i = 1; i < currentSize; i++)
+    {
+        UserLog key = logsArray[i];
+        int j = i - 1;
+
+        while (j >= 0 && ((logsArray[j].year > key.year && logsArray[j].month == key.month && logsArray[j].days == key.days) ||
+                          (logsArray[j].year > key.year && logsArray[j].month == key.month && logsArray[j].days > key.days) ||
+                          (logsArray[j].year > key.year && logsArray[j].month > key.month && logsArray[j].days > key.days)))
+        {
+
+            logsArray[j + 1] = logsArray[j];
+            j--;
+        }
+        logsArray[j + 1] = key;
+    }
+
+    for (int i = 0; i < currentSize; i++)
+    {
+        cout << logsArray[i].des << endl;
+    }
+}
+void sortingByAverage(UserLog logsArray[100], int currentSize)
+{
+
+    for (int i = 1; i < currentSize; i++)
+    {
+        UserLog key = logsArray[i];
+        int j = i - 1;
+
+        while (j >= 0 && logsArray[j].ave > key.ave)
+        {
+
+            logsArray[j + 1] = logsArray[j];
+            j--;
+        }
+        logsArray[j + 1] = key;
+    }
+
+    for (int i = 0; i < currentSize; i++)
+    {
+        cout << logsArray[i].des << endl;
+    }
+}
 // tools
-void clear(){
+void clear()
+{
     system("cls");
 }
