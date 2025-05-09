@@ -58,15 +58,15 @@ string Result_Assessment(double average)
 {
     if (average <= 3.3)
     {
-        return "You're likely feeling very low mentally and emotionally right now.";
+        return "You're feeling balanced, calm, and positive. Keep Logtaining this mindset and continue to take care of your mental health every day";
     }
     else if (average <= 6.6)
     {
-        return "You're feeling a bit stressed and emotionally low today.It's okay to have off days. Try to take breaks, rest, or do something small that brings you joy.";
+        return "You're feeling a bit stressed and emotionally low today.It's okay to have off days. Try to take breaks, rest, or do something small that brings you joy";
     }
     else if (average <= 10)
     {
-        return "You're feeling balanced, calm, and positive. Keep Logtaining this mindset and continue to take care of your mental health every day.";
+        return "You're likely feeling very low mentally and emotionally right now";
     }
     return "";
 }
@@ -98,19 +98,20 @@ void user(int i)
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
     cout << "<< USER INFORMATION" << endl;
-    cout << "First Name : ";
+    cout << "First Name\t: ";
     getline(cin, FN);
 
-    cout << "Last Name  : ";
+    cout << "Last Name \t: ";
     getline(cin, LN);
 
-    cout << "Age\t: ";
+    cout << "Age \t\t: ";
     cin >> Age;
 
-    cout << "Gender\t: ";
+    cout << "Gender \t\t: ";
     cin >> Gender;
-
-    cout << "Date\t:";
+    
+    cout << endl;
+    cout << "Date[mm dd yyyy]: ";
     cin >> day[i].days >> day[i].month >> day[i].year;
     cin.ignore();
     userlog.days = day[i].days;
@@ -124,16 +125,16 @@ void Stress(int i)
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
     cout << "<< Rate your Stress level for today " << FN << "." << endl;
-    cout << "\t|| 1 — 	??  Totally relaxed" << endl;
-    cout << "\t|| 2 — 	??  Calm, minor concerns" << endl;
-    cout << "\t|| 3 — 	??  Mild stress" << endl;
-    cout << "\t|| 4 — 	??  Slightly overwhelmed" << endl;
-    cout << "\t|| 5 — 	??  Managing but pressured" << endl;
-    cout << "\t|| 6 — 	??  Clearly stressed" << endl;
-    cout << "\t|| 7 — 	??  Overwhelmed" << endl;
-    cout << "\t|| 8 — 	??  Very anxious or drained" << endl;
-    cout << "\t|| 9 — 	??  Near burnout" << endl;
-    cout << "\t|| 10 —	??  Total meltdown" << endl;
+    cout << "\t|| 1 — 	  Totally relaxed" << endl;
+    cout << "\t|| 2 — 	  Calm, minor concerns" << endl;
+    cout << "\t|| 3 — 	  Mild stress" << endl;
+    cout << "\t|| 4 — 	  Slightly overwhelmed" << endl;
+    cout << "\t|| 5 — 	  Managing but pressured" << endl;
+    cout << "\t|| 6 — 	  Clearly stressed" << endl;
+    cout << "\t|| 7 — 	  Overwhelmed" << endl;
+    cout << "\t|| 8 — 	  Very anxious or drained" << endl;
+    cout << "\t|| 9 — 	  Near burnout" << endl;
+    cout << "\t|| 10 —	  Total meltdown" << endl;
     cout << endl;
     cout << "\t\t(11) Back to menu" << endl;
     cout << ">> ";
@@ -185,16 +186,16 @@ void Emotion(int i)
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
     cout << "<< Scale your Emotion level for today " << FN << "." << endl;
-    cout << "\t|| 1 — 	??  Joyful / euphoric" << endl;
-    cout << "\t|| 2 — 	??  Very Happy" << endl;
-    cout << "\t|| 3 — 	??  Happy" << endl;
-    cout << "\t|| 4 — 	??  Good mood" << endl;
-    cout << "\t|| 5 — 	??  Okay / slightly positive " << endl;
-    cout << "\t|| 6 — 	??  Neutral" << endl;
-    cout << "\t|| 7 — 	??  Meh/ low energy" << endl;
-    cout << "\t|| 8 — 	??  Sad or tired" << endl;
-    cout << "\t|| 9 — 	??  Very down" << endl;
-    cout << "\t|| 10 —	??  Extremely sad" << endl;
+    cout << "\t|| 1 — 	  Joyful / euphoric" << endl;
+    cout << "\t|| 2 — 	  Very Happy" << endl;
+    cout << "\t|| 3 — 	  Happy" << endl;
+    cout << "\t|| 4 — 	  Good mood" << endl;
+    cout << "\t|| 5 — 	  Okay / slightly positive " << endl;
+    cout << "\t|| 6 — 	  Neutral" << endl;
+    cout << "\t|| 7 — 	  Meh/ low energy" << endl;
+    cout << "\t|| 8 — 	  Sad or tired" << endl;
+    cout << "\t|| 9 — 	  Very down" << endl;
+    cout << "\t|| 10 —	  Extremely sad" << endl;
     cout << endl;
     cout << "\t\t(11) Back to menu" << endl;
     cout << ">> ";
@@ -247,16 +248,16 @@ void Mood(int i)
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
     cout << "<< Rate your Mood level for today " << FN << "." << endl;
-    cout << "\t|| 1 — 	??  Awesome / joyful " << endl;
-    cout << "\t|| 2 — 	??  Great / excited" << endl;
-    cout << "\t|| 3 — 	??  Happy / positive" << endl;
-    cout << "\t|| 4 — 	??  Pretty good mood" << endl;
-    cout << "\t|| 5 — 	??  Slightly upbeat" << endl;
-    cout << "\t|| 6 — 	??  Neutral" << endl;
-    cout << "\t|| 7 — 	??  Dull / bored" << endl;
-    cout << "\t|| 8 — 	??  Low / not great" << endl;
-    cout << "\t|| 9 — 	??  Grumpy or irritable" << endl;
-    cout << "\t|| 10 —	??  Very bad mood" << endl;
+    cout << "\t|| 1 — 	  Awesome / joyful " << endl;
+    cout << "\t|| 2 — 	  Great / excited" << endl;
+    cout << "\t|| 3 — 	  Happy / positive" << endl;
+    cout << "\t|| 4 — 	  Pretty good mood" << endl;
+    cout << "\t|| 5 — 	  Slightly upbeat" << endl;
+    cout << "\t|| 6 — 	  Neutral" << endl;
+    cout << "\t|| 7 — 	  Dull / bored" << endl;
+    cout << "\t|| 8 — 	  Low / not great" << endl;
+    cout << "\t|| 9 — 	  Grumpy or irritable" << endl;
+    cout << "\t|| 10 —	  Very bad mood" << endl;
     cout << endl;
     cout << "\t\t(11) Back to menu" << endl;
     cout << ">> ";
@@ -399,14 +400,15 @@ void Log(int i)
         cout << "<< Mental State Average: " << fixed << setprecision(1) << Result_Mental_State(day[i].sum, i) << " " << Description(day[i].average) << endl;
         logs[i].ave = Result_Mental_State(day[i].sum, i);
         logs[i].des = Description(day[i].average);
-        cout << "********************************************************************" << endl;
-        cout << "(1) Would you like to enter new log?" << endl;
-        cout << "(2) Sorting by Mental State" << endl;
-        cout << "(3) Sorting by Date" << endl;
         cout << endl;
-        cout << "\t\t(4) Back to menu" << endl;
+        cout << "************************************************" << endl;
+        cout << "(1) Would you like to enter new log?" << endl;
+        cout << "(2) Sort by Mental State" << endl;
+        cout << endl;
+        cout << "\t\t(3) Back to menu" << endl;
         cout << ">> ";
         cin >> day[i].choice2;
+        cout << "************************************************" << endl;
         if (day[i].choice2 == 1)
         {
             i++;
@@ -426,9 +428,6 @@ void Log(int i)
             sortingByMental(logs, i);
         }
         if (day[i].choice2 == 3)
-        {
-        }
-        if (day[i].choice2 == 4)
         {
             Menu(i);
             Log(i);
@@ -467,7 +466,7 @@ void sortingByMental(UserLog logsArray[100], int currentSize)
 {
 
     clear();
-    cout << "Current size: " << currentSize << endl;
+    cout << "Current days: " << currentSize << endl;
     cout << "==============================================" << endl;
     cout << "\tEMOSHOWN: MENTAL HEALTH TRACKER\t" << endl;
     cout << "==============================================" << endl;
@@ -494,7 +493,7 @@ void sortingByMental(UserLog logsArray[100], int currentSize)
         {
             cout << setw(15) << left << (to_string(logsArray[i].month) + "/" + to_string(logsArray[i].days) + "/" + to_string(logsArray[i].year)) << setw(25) << left << logsArray[i].ave << setw(15) << left << logsArray[i].des << endl;
         }
-
+        cout << endl;
         cout << "\t\t(1) Back to menu" << endl;
         cout << ">> ";
         cin >> c;
@@ -559,4 +558,12 @@ void sortingByAverage(UserLog logsArray[100], int currentSize)
 void clear()
 {
     system("cls");
+}
+
+void deleteLog(int index,int size,int arr[]){
+    if (index >= 0 && index < size) {
+        for (int i = index; i < size - 1; ++i)
+            arr[i] = arr[i + 1];
+        size--;
+    }
 }
