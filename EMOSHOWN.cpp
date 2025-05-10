@@ -567,3 +567,4 @@ void deleteLog(int index,int size,int arr[]){
         size--;
     }
 }
+//yoh
