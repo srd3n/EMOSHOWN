@@ -45,6 +45,7 @@ struct UserLog
 
 Day day[DAYS];
 UserLog logs[100];
+void deleteLog(int mm, int dd, int yyyy,int size);
 void sortingByDate(UserLog logsArray[100], int currentSize);
 void sortingByMental(UserLog logsArray[100], int currentSize);
 void sortingByAverage(UserLog logsArray[100], int currentSize);
@@ -485,6 +486,7 @@ void sortingByMental(UserLog logsArray[100], int currentSize)
         logsArray[j + 1] = key;
     }
     int c;
+    int mm, dd, yyyy;
     do
     {
         cout << setw(15) << left << "Date" << setw(25) << left << "Mental Health State" << setw(15) << left << "Description" << endl
@@ -494,10 +496,20 @@ void sortingByMental(UserLog logsArray[100], int currentSize)
             cout << setw(15) << left << (to_string(logsArray[i].month) + "/" + to_string(logsArray[i].days) + "/" + to_string(logsArray[i].year)) << setw(25) << left << logsArray[i].ave << setw(15) << left << logsArray[i].des << endl;
         }
         cout << endl;
-        cout << "\t\t(1) Back to menu" << endl;
-        cout << ">> ";
-        cin >> c;
-    } while (c != 1);
+         cout << "1. Delete Log" << endl;
+            cout << "\t\t(2) Back to menu" << endl;
+            cout << ">> ";
+            cin >> c;
+            if (c == 1)
+            {
+                cin.ignore();
+                cout << "Enter Date [mm dd yyyy]: ";
+                cin >> mm >> dd >> yyyy;
+              
+                deleteLog(mm, dd, yyyy, currentSize);
+                return;
+            }
+        } while (c != 2);
     clear();
     Menu(currentSize);
     Log(currentSize);
@@ -560,11 +572,32 @@ void clear()
     system("cls");
 }
 
-void deleteLog(int index,int size,int arr[]){
-    if (index >= 0 && index < size) {
-        for (int i = index; i < size - 1; ++i)
-            arr[i] = arr[i + 1];
-        size--;
+void deleteLog(int mm, int dd, int yyyy,int size){
+    int index = -1;
+      for (int i = 0; i < size + 1; i++) 
+    {
+        //cout << logs[i].days << logs[i].month << logs[i].year << endl;
+        if (logs[i].days == dd && logs[i].month == mm && logs[i].year == yyyy)
+        {
+
+            cout << "Deleting log for date: " << mm << "/" << dd << "/" << yyyy << endl;
+            index = i;
+            break;
+        }
     }
+  
+    if (index == -1) 
+    {
+        cout << "Log for the specified date not found." << endl;
+        return;
+    }
+    if (index >= 0 && index < size + 1) {
+        for (int i = index; i < size; ++i)
+            logs[i] = logs[i + 1];
+        size--;
+       // cout << "size now: " << size;
+    }
+     // cin >> index;
+    sortingByMental(logs,size);
 }
 //yoh
